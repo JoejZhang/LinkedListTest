@@ -18,24 +18,25 @@ public class CheckLinkedListTest {
     private Node listCircle2;//有环链表2
     private Node list1, list2;//单链表,两者不重合
     private Node list3, list4;//单链表,两者重合
-    private Random r = new Random();
+    private Random r = new Random();//产生随机数
 
     @Before
     public void before() throws Exception {
         //在这个初始化链表，测试用例
+
         listNull = null;//空链表
 
-        listCircle1  = getLinkedList(12);//listCircle1先初始化为一条链
-        alistLastInsertBIndex(listCircle1, listCircle1,5);//listCircle1形成一个环
-        listCircle2  = getLinkedList(14);
-        alistLastInsertBIndex(listCircle2, listCircle2,6);//listCircle2形成一个环
+        listCircle1 = getLinkedList(12);//listCircle1先初始化为一条链
+        alistLastInsertBIndex(listCircle1, listCircle1, 5);//listCircle1形成一个环
+        listCircle2 = getLinkedList(14);
+        alistLastInsertBIndex(listCircle2, listCircle2, 6);//listCircle2形成一个环
 
         list1 = getLinkedList(10);//创建一条长度为10的链表
         list2 = getLinkedList(10);
 
         list3 = getLinkedList(10);
         list4 = getLinkedList(6);
-        alistLastInsertBIndex(list4,list3,5);//list4链表插入list3中。使两条链表相交
+        alistLastInsertBIndex(list4, list3, 5);//list4链表插入list3中。使两条链表相交
 
     }
 
@@ -55,7 +56,8 @@ public class CheckLinkedListTest {
         return node;
     }
 
-    public Node getLastNode(Node list) {
+    //获取链表最末尾结点
+    private Node getLastNode(Node list) {
         Node nLast = list;
         while (nLast.next != null) {
             nLast = nLast.next;
@@ -64,16 +66,23 @@ public class CheckLinkedListTest {
     }
 
     //a链表末端插入b链表的某个位置
-   private void alistLastInsertBIndex(Node a ,Node b ,int index){
-       Node insertNode = b;
-       for (int i = 0; i < index; i++) {
-           insertNode = insertNode.next;
-       }
-       getLastNode(a).next = insertNode;//list4插入list3
-   }
+    private void alistLastInsertBIndex(Node a, Node b, int index) {
+        Node insertNode = b;
+        for (int i = 0; i < index; i++) {
+            insertNode = insertNode.next;
+        }
+        getLastNode(a).next = insertNode;
+    }
 
     @After
     public void after() throws Exception {
+        listNull = null;
+        listCircle1 = null;
+        listCircle2 = null;
+        list1 = null;
+        list2 = null;
+        list3 = null;
+        list4 = null;
 
     }
 
